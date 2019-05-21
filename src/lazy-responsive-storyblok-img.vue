@@ -236,7 +236,6 @@ export default {
 
   &__placeholder {
     position: relative;
-    background-color: grey;
   }
   &__media {
     position: absolute;
