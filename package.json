@@ -1,0 +1,38 @@
+{
+  "name": "lazy-responsive-storyblok-img",
+  "version": "0.0.1",
+  "description": "A lazy-loading, responsive Vue.js image component to use with the Storyblok-CMS.",
+  "main": "lib/index.js",
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/runtime": "^7.4.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.2",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1",
+    "rimraf": "^2.6.2"
+  },
+  "peerDependencies": {
+    "vue": "^2.0.0"
+  },
+  "scripts": {
+    "start": "babel-node src",
+    "build": "rimraf ./dist && webpack --config ./webpack.config.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarcRoemmelt/lazy-responsive-storyblok-img"
+  },
+  "keywords": [],
+  "author": "Marc Römmelt",
+  "license": "MIT",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
