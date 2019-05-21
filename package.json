@@ -1,12 +1,12 @@
 {
   "name": "lazy-responsive-storyblok-img",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A lazy-loading, responsive Vue.js image component to use with the Storyblok.",
   "main": "dist/lazy-responsive-storyblok-img.min.js",
   "module": "dist/lazy-responsive-storyblok-img.umd.js",
   "unpkg": "dist/lazy-responsive-storyblok-img.min.js",
   "browser": {
-    "./component": "src/lazy-responsive-storyblok-img.vue"
+    "./component": "src/index.js"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.4.4",
@@ -36,9 +36,9 @@
     "vue": "^2.0.0"
   },
   "scripts": {
-    "build": "npm run build:umd && npm run build:unpkg",
-    "build:umd": "rimraf dist/lazy-respnsive-storyblok-img.umd.js && webpack --config ./build/umd.webpack.js",
-    "build:unpkg": "rimraf dist/lazy-respnsive-storyblok-img.min.js && webpack --config ./build/min.webpack.js",
+    "build": "rimraf ./dist && npm run build:umd && npm run build:unpkg",
+    "build:umd": "webpack --config ./build/umd.webpack.js",
+    "build:unpkg": "webpack --config ./build/min.webpack.js",
     "test": "jest"
   },
   "repository": {

@@ -1,9 +1,6 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-	entry: {
-    	app: './src/index.js'
-	},
 	module: {
 		rules: [
 			{

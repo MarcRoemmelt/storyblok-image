@@ -6,13 +6,16 @@ module.exports = Object.assign(
   {},
   baseConfig,
   {
+    entry: './src/lazy-responsive-storyblok-img.vue',
     mode: 'production',
     output: {
+      library: 'lazy-responsive-storyblok-img',
       libraryTarget: 'umd',
-      filename: '[name].umd.js',
+      filename: 'lazy-responsive-storyblok-img.umd.js',
+      umdNamedDefine: true
     },
     optimization: {
-      minimize: true
-    }
+      minimize: false
+    },
   }
 )

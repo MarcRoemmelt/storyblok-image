@@ -6,10 +6,12 @@ module.exports = Object.assign(
   {},
   baseConfig,
   {
+    entry: './src/index.js',
     mode: 'production',
     output: {
-      libraryTarget: 'commonjs',
-      filename: '[name].min.js',
+      libraryTarget: 'window',
+      library: 'StoryblokImage',
+      filename: 'lazy-responsive-storyblok-img.min.js',
     },
     optimization: {
       minimize: true
