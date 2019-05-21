@@ -145,9 +145,10 @@ export default {
 
         imageRatio() {
             if (this.width && this.height) return (this.height / this.width) * 100;
-            if (this.aspectRatio) return this.aspectRatio * 100
+            if (this.aspectRatio) return this.aspectRatio * 100;
             return 100;
         },
+
         style() {
             const style = {
                 height: 0,
@@ -230,7 +231,7 @@ export default {
         },
 
         createImageURLwithSize(size) {
-            return `${this.baseURL}/${size}x${size*100*(1/this.imageRatio)}/smart${this.webpSupport ? '/filters:format(webp)' : ''}${this.src}`;
+            return `${this.baseURL}/${size}x${Math.round(100*size*(1/this.imageRatio))}/smart${this.webpSupport ? '/filters:format(webp)' : ''}${this.src}`;
         }
     }
 };
