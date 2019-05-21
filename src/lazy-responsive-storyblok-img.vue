@@ -10,6 +10,7 @@
         />
         <div class="lazy-responsive-image__media">
             <img
+                v-if="showThumbnail"
                 :src="thumbnailSource"
                 class="lazy-responsive-image__thumbnail"
                 :class="{ 'cover': cover }"
@@ -113,6 +114,7 @@ export default {
         return {
             image: null,
             loading: true,
+            showThumbnail: true,
             webpSupport: false,
 
             finalSizes: '',
@@ -153,7 +155,10 @@ export default {
         this.testWebpSupport();
         this.image = this.$el.querySelector('#image');
         const setLoadingState = () => {
-          this.loading = false;
+            this.loading = false;
+            setTimeout(() => {
+                this.showThumbnail = false
+            }, 400)
         };
         this.image.addEventListener('load', setLoadingState);
         this.$once('hook:destroyed', () => {
