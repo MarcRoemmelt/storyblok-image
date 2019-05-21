@@ -231,7 +231,7 @@ export default {
         },
 
         createImageURLwithSize(size) {
-            return `${this.baseURL}/${size}x${Math.round(100*size*(1/this.imageRatio))}/smart${this.webpSupport ? '/filters:format(webp)' : ''}${this.src}`;
+            return `${this.baseURL}/${size}x${Math.round(100*size*this.imageRatio)}/smart${this.webpSupport ? '/filters:format(webp)' : ''}${this.src}`;
         }
     }
 };
