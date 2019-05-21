@@ -2,6 +2,7 @@
     <div
         class="lazy-responsive-image"
         :class="{ 'lazy-responsive-image_zoomable': zoom }"
+        :style="imageSize"
     >
         <div
             class="lazy-responsive-image__placeholder"
@@ -42,17 +43,8 @@ export default {
     },
 
     breakpoints: {
-        type: Array,
-        default() {
-            return [
-                '440px',
-                '620px',
-                '960px',
-                '1260px',
-                '1540px',
-                '2260px'
-            ]
-        }
+        type: String,
+        default: '440px, 620px, 960px, 1260px, 1540px, 2260px'
     },
 
     cover: {
@@ -87,17 +79,8 @@ export default {
     },
 
     sizes: {
-        type: Array,
-        default() {
-            return [
-                '100vw',
-                '400px',
-                '500px',
-                '500px',
-                '750px',
-                '1200px'
-            ]
-        }
+        type: String,
+        default: '100vw, 400px, 500px, 500px, 750px, 1200px',
     },
 
     sizeStep: {
@@ -140,7 +123,7 @@ export default {
 
     computed: {
         thumbnailSource() {
-            return `${this.baseURL}/20x20/${this.src}`
+            return `${this.baseURL}/20x${Math.round(20*this.imageRatio/100)}/${this.src}`
         },
 
         imageRatio() {
@@ -153,10 +136,17 @@ export default {
             const style = {
                 height: 0,
                 paddingTop: `${this.imageRatio}%`,
-                width: this.width ? `${this.width}px` : 'auto'
             };
             return style;
         },
+
+        imageSize() {
+            const style = {
+                width: this.width ? `${this.width}px` : '100%',
+                height: this.height ? `${this.height}px` : 'auto',
+            }
+            return style;
+        }
     },
 
     mounted() {
@@ -203,7 +193,6 @@ export default {
                 this.webpSupport = false;
                 return;
             }
-
             let webP = new Image();
             webP.src = 'data:image/webp;base64,UklGRi4AAABXRUJQVlA4TCEAAAAvAUAAEB8wAiMwAgSSNtse/cXjxyCCmrYNWPwmHRH9jwMA';
             webP.onload = webP.onerror = () => {
@@ -215,9 +204,11 @@ export default {
         },
 
         sizesString() {
+            const sizesArr = this.sizes.replace(/\s+/g, '').split(',')
+            const breakpointsArr = this.breakpoints.replace(/\s+/g, '').split(',')
             let sizes = '';
-            for (let i = this.breakpoints.length -1 ; i > 0; i--) {
-                sizes += `(min-width: ${this.breakpoints[i]}) ${this.sizes[i] || '100vw'},`;
+            for (let i = breakpointsArr.length -1 ; i > 0; i--) {
+                sizes += `(min-width: ${breakpointsArr[i]}) ${sizesArr[i] || '100vw'},`;
             }
             return sizes + `${this.sizes[0] || '100vw'}`;
         },
