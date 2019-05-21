@@ -33,7 +33,7 @@ export default {
   props: {
     aspectRatio: {
         type: [Number, String],
-        default: 1
+        default: null
     },
 
     baseURL: {
@@ -231,7 +231,8 @@ export default {
         },
 
         createImageURLwithSize(size) {
-            return `${this.baseURL}/${size}x${Math.round(100*size*this.imageRatio)}/smart${this.webpSupport ? '/filters:format(webp)' : ''}${this.src}`;
+            let height = Math.round(size*this.imageRatio/100);
+            return `${this.baseURL}/${size}x${height}/smart${this.webpSupport ? '/filters:format(webp)' : ''}${this.src}`;
         }
     }
 };
