@@ -11,6 +11,7 @@
             <img
                 :src="thumbnailSource"
                 class="lazy-responsive-image__thumbnail"
+                :class="{ 'cover': cover }"
             >
             <transition name="fade">
                 <img
@@ -19,6 +20,7 @@
                     :sizes="finalSizes"
                     :srcset="finalSrcset"
                     class="lazy-responsive-image__image"
+                    :class="{ 'cover': cover }"
                 >
             </transition>
         </div>
@@ -46,6 +48,11 @@ export default {
                 '2260px'
             ]
         }
+    },
+
+    cover: {
+        type: Boolean,
+        default: false
     },
 
     height: {
@@ -245,6 +252,10 @@ export default {
     height: 100%;
     filter: blur(25px);
     z-index: 1;
+
+    &.cover {
+        object-fit: cover;
+    }
   }
 
   &__image {
@@ -255,6 +266,10 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 2;
+
+    &.cover {
+        object-fit: cover;
+    }
   }
 
   &_zoomable {
