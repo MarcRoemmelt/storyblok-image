@@ -31,6 +31,11 @@
 export default {
   name: 'LazyResponsiveImage',
   props: {
+    aspectRatio: {
+        type: [Number, String],
+        default: 1
+    },
+
     baseURL: {
         type: String,
         default: '/images',
@@ -139,8 +144,9 @@ export default {
         },
 
         aspectRatio() {
-          if (!this.width || !this.height) return 100;
-          return (this.height / this.width) * 100;
+            if (this.width && this.height) return (this.height / this.width) * 100;
+            if (this.aspectRatio) return this.aspectRatio * 100
+            return 100;
         },
         style() {
             const style = {
