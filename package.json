@@ -2,7 +2,7 @@
   "name": "lazy-responsive-storyblok-img",
   "version": "0.0.2",
   "description": "A lazy-loading, responsive Vue.js image component to use with the Storyblok.",
-  "main": "dist/lazy-responsive-storyblok-img.min.js",
+  "main": "dist/lazy-responsive-storyblok-img.umd.js",
   "module": "dist/lazy-responsive-storyblok-img.umd.js",
   "unpkg": "dist/lazy-responsive-storyblok-img.min.js",
   "browser": {
