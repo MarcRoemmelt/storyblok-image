@@ -227,7 +227,7 @@ export default {
         },
 
         createImageURLwithSize(size) {
-            let height = Math.round(size*this.imageRatio/100);
+            let height = this.aspectRatio ? Math.round(size*this.imageRatio/100) : 0;
             return `${this.baseURL}/${size}x${height}/smart${this.webpSupport ? '/filters:format(webp)' : ''}${this.src}`;
         }
     }
@@ -267,7 +267,6 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     z-index: 2;
 
     &.cover {
